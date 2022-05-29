@@ -327,10 +327,12 @@ search_desktop_file()
             exit_success
         fi
     fi
-
+    SAVEIFS=$IFS
+    IFS=$(echo -en "\n\b")
     for d in "$dir/"*/; do
         [ -d "$d" ] && search_desktop_file "$default" "$d" "$target"
     done
+    IFS=$SAVEIFS
 }
 
 
